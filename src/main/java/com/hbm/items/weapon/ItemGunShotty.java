@@ -9,7 +9,7 @@ import com.hbm.packet.PacketDispatcher;
 import com.hbm.packet.SetGunAnimPacket;
 import com.hbm.render.anim.HbmAnimations.AnimType;
 
-import glmath.glm.vec._2.Vec2;
+import glm.vec._2.Vec2;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;

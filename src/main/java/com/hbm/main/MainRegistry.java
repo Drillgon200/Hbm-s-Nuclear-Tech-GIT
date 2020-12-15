@@ -300,7 +300,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-@Mod(modid = RefStrings.MODID, version = RefStrings.VERSION, name = RefStrings.NAME)
+@Mod(modid = RefStrings.MODID, version = RefStrings.VERSION, name = RefStrings.NAME, dependencies = "required-after:redstoneflux")
 public class MainRegistry {
 
 	static {

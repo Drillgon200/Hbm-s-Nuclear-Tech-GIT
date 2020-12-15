@@ -11,10 +11,10 @@ import com.hbm.handler.HbmShaderManager;
 import com.hbm.main.ModEventHandlerClient;
 import com.hbm.portals.DummyRenderEntity;
 
-import glmath.glm.mat._3.Mat3;
-import glmath.glm.mat._4.Mat4;
-import glmath.glm.vec._3.Vec3;
-import glmath.glm.vec._4.Vec4;
+import glm.mat._3.Mat3;
+import glm.mat._4.Mat4;
+import glm.vec._3.Vec3;
+import glm.vec._4.Vec4;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;

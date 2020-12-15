@@ -1,17 +1,19 @@
 buildscript {
 	repositories {
 		maven { url = 'https://files.minecraftforge.net/maven' }
-		maven { url = 'https://plugins.gradle.org/m2' }
+		maven { url = 'https://plugins.gradle.org/m2/' }
 		mavenCentral()
 		jcenter()
 	}
 	dependencies {
 		classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
 		classpath 'com.palantir.gradle.gitversion:gradle-git-version:0.12.3'
+		classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.3'
 	}
 }
 
 apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'com.github.johnrengelman.shadow'
 apply plugin: 'com.palantir.git-version'
 
 group = "com.hbm.nuclear-tech" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
@@ -28,13 +30,20 @@ minecraft {
 }
 
 repositories {
+	mavenCentral()
 	maven {
 		name = 'JEI Repository'
 		url = 'https://dvs1.progwml6.com/files/maven/'
 	}
+	maven {
+		name = "CoFH Maven"
+		url = "http://maven.covers1624.net"
+	}
 }
 
 dependencies {
+	compile 'io.github.java-graphics:glm:1.0.1'
+	deobfCompile 'cofh:RedstoneFlux:1.12-2.0.0.1:universal'
 	deobfCompile 'mezz.jei:jei_1.12.2:4.15.0.291:api'
 	runtime 'mezz.jei:jei_1.12.2:4.15.0.291'
 }
@@ -74,3 +83,18 @@ processResources {
 	// Move ATs to meta inf directory
 	rename '(.+_at.cfg)', 'META-INF/$1'
 }
+
+shadowJar {
+	classifier = ""
+	dependencies {
+		include(dependency("io.github.java-graphics:glm:1.0.1"))
+	}
+}
+
+reobf {
+	shadowJar {
+		mappingType = "SEARGE"
+	}
+}
+
+tasks.reobfShadowJar.mustRunAfter shadowJar
